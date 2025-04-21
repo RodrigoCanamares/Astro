@@ -1,0 +1,31 @@
+---
+// src/components/Counter.astro
+---
+
+<h1>Contador de Clics</h1>
+<p>Has hecho <span id="count">0</span> clics.</p>
+<button id="addButton">Sumar</button>
+<button id="restButton">Restar</button>
+<button id="resetButton">Reiniciar</button>
+
+<!-- El script ahora se encarga de manejar el estado del contador -->
+<script type="module">
+  let count = 0;
+  const Addbutton = document.getElementById('addButton');
+  const Restbutton = document.getElementById('restButton');
+  const Resetbutton = document.getElementById('resetButton');
+  const countSpan = document.getElementById('count');
+
+  Addbutton.addEventListener('click', () => {
+    count++;
+    countSpan.innerText = count;  // Actualiza el valor en el DOM
+  });
+  Restbutton.addEventListener('click', () => {
+    count--;
+    countSpan.innerText = count;  // Actualiza el valor en el DOM
+  });
+  Resetbutton.addEventListener('click', () => {
+    count=0;
+    countSpan.innerText = count;  // Actualiza el valor en el DOM
+  });
+</script>

@@ -1,0 +1,15 @@
+{
+  "name": "mi-proyecto-astro",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "algoliasearch": "^4.17.1",
+    "astro": "^4.0.0",
+    "instantsearch.js": "^4.66.1",
+    "solid-js": "^1.9.5"
+  }
+}

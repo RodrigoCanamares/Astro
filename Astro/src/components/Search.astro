@@ -1,0 +1,47 @@
+---
+import algoliasearch from 'algoliasearch';
+import instantsearch from 'instantsearch.js';
+import { searchBox, hits } from 'instantsearch.js/es/widgets';
+
+const searchClient = algoliasearch('TU_APP_ID', 'TU_API_KEY');
+const search = instantsearch({
+  indexName: 'NOMBRE_DEL_INDICE',
+  searchClient: searchClient,
+});
+---
+
+<!-- Aquí agregamos los elementos para el componente de búsqueda -->
+<div id="searchbox"></div>
+<div id="hits"></div>
+
+<script type="module">
+  // Código para inicializar InstantSearch solo en el cliente
+  const search = instantsearch({
+    indexName: 'NOMBRE_DEL_INDICE',
+    searchClient: algoliasearch('TU_APP_ID', 'TU_API_KEY'),
+  });
+
+  search.addWidgets([
+    instantsearch.widgets.searchBox({
+      container: '#searchbox',
+    }),
+    instantsearch.widgets.hits({
+      container: '#hits',
+      templates: {
+        item: (hit) => `<div class='result-item'>${hit.name}</div>`,
+      },
+    }),
+  ]);
+
+  search.start();
+</script>
+
+<style>
+  #searchbox {
+    margin-bottom: 1rem;
+  }
+  .result-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+</style>
